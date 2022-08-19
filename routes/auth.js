@@ -3,15 +3,19 @@ const router = express.Router();
 const User = require("./../models/User");
 const Ngo = require("./../models/NGO");
 const bcrypt = require("bcryptjs");
-
+var owasp = require("owasp-password-strength-test");
 
 router.get("/signup", (req, res) => {
-res.render("signup");
-}); 
+  res.render("signup");
+});
 
 router.post("/signup", async (req, res) => {
-  const { name, email, password, type,phone,address } = req.body;
-  const salt = await bcrypt.genSalt(10);
+  const { name, email, password, type, phone, address } = req.body;
+  var result = owasp.test(password);
+  if (result.errors.length > 0) {
+    res.json(result.errors);
+  }else{
+    const salt = await bcrypt.genSalt(10);
   const hashPassword = await bcrypt.hash(password, salt);
   try {
     if (type === "user") {
@@ -24,11 +28,10 @@ router.post("/signup", async (req, res) => {
         address,
       });
       await user.save();
-      
+
       req.session.currentUser = user;
       return res.redirect("/user/donate");
       // console.log(req.session.currentUser);
-     
     } else if (type === "ngo") {
       var ngo = new Ngo({
         name,
@@ -36,18 +39,19 @@ router.post("/signup", async (req, res) => {
         type,
         password: hashPassword,
         phone,
-       
       });
 
       await ngo.save();
       req.session.currentUser = ngo;
       return res.redirect("/user/avail");
-     
     }
   } catch (err) {
     console.log(err.message);
     res.status(500).send("Server Error!");
   }
+  }
+
+  
 });
 
 router.post("/login", async (req, res) => {
@@ -62,13 +66,12 @@ router.post("/login", async (req, res) => {
         if (!isMatched) {
           return req.json({ msg: "Not Authorized!" });
         }
-        
+
         // res.render("avail");
-        
+
         req.session.currentUser = user;
         return res.redirect("/user/donate");
         // console.log(req.session.currentUser);
-       
       } else {
         res.json({ msg: "Not Found!" });
       }
@@ -79,7 +82,7 @@ router.post("/login", async (req, res) => {
         if (!isMatched) {
           return res.json({ msg: "Not Authorized!" });
         }
-        
+
         req.session.currentUser = ngo;
         return res.redirect("/user/avail");
       } else {
