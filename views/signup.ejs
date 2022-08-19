@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>WeCare - Signup</title>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, user-scalable=no"
+    />
+    <link rel="stylesheet" href="/assets/css/main.css" />
+    <noscript
+      ><link rel="stylesheet" href="/assets/css/noscript.css"
+    /></noscript>
+    <link rel="shortcut icon" href="/assets/favicons/favicon-32x32.png" />
+  </head>
+  <body class="is-preload">
+    <!-- Page Wrapper -->
+    <div id="page-wrapper">
+      <!-- Header -->
+      <header id="header">
+        <a href="/"> <h1>We Cover</h1></a>
+      </header>
+
+      <!-- Main -->
+      <article id="main">
+        <header>
+          <h2>SIGN UP</h2>
+          <p>Sign Up for a good cause!</p>
+        </header>
+        <section class="wrapper style5">
+          <div class="inner">
+            <h3>DETAILS</h3>
+
+            <form action="/auth/signup" method="POST">
+              <label for="choose"> Choose whether to Donate/Avail</label>
+              <select id="choose" name="type">
+                <option value="user">Donate</option>
+                <option value="ngo">Avail</option>
+              </select>
+              <label for="name">Enter Full Name/Name Of Organization</label>
+              <input
+                type="text"
+                name="name"
+                id="name"
+                placeholder="Name"
+                name="name"
+              />
+              <label for="add"> Enter Address</label>
+              <input
+                type="text"
+                name="address"
+                id="add"
+                placeholder="Address"
+              />
+              <label for="num">Enter Phone Number</label>
+              <input
+                type="text"
+                id="num"
+                placeholder="Phone Number"
+                name="phone"
+              />
+              <label for="mail"> Enter Email Address</label>
+              <input
+                type="email"
+                name="email"
+                id="email"
+                placeholder="Email"
+                name="email"
+              />
+              <label for="pass">Enter Password</label>
+              <input
+                type="password"
+                name="password"
+                id="pass"
+                placeholder="Password"
+                name="password"
+              />
+              <br />
+              <button>Submit</button>
+            </form>
+          </div>
+        </section>
+      </article>
+
+      <!-- Footer -->
+      <footer id="footer">
+        <ul class="icons">
+          <li>
+            <a href="#" class="icon brands fa-twitter"
+              ><span class="label">Twitter</span></a
+            >
+          </li>
+          <li>
+            <a href="#" class="icon brands fa-facebook-f"
+              ><span class="label">Facebook</span></a
+            >
+          </li>
+          <li>
+            <a href="#" class="icon brands fa-instagram"
+              ><span class="label">Instagram</span></a
+            >
+          </li>
+          <li>
+            <a href="#" class="icon brands fa-dribbble"
+              ><span class="label">Dribbble</span></a
+            >
+          </li>
+          <li>
+            <a href="#" class="icon solid fa-envelope"
+              ><span class="label">Email</span></a
+            >
+          </li>
+        </ul>
+      </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/jquery.scrollex.min.js"></script>
+    <script src="/assets/js/jquery.scrolly.min.js"></script>
+    <script src="/assets/js/browser.min.js"></script>
+    <script src="/assets/js/breakpoints.min.js"></script>
+    <script src="/assets/js/util.js"></script>
+    <script src="/assets/js/main.js"></script>
+  </body>
+</html>

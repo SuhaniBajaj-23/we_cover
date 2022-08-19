@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>WeCare - Donate</title>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, user-scalable=no"
+    />
+    <link rel="stylesheet" href="/assets/css/main.css" />
+    <noscript
+      ><link rel="stylesheet" href="/assets/css/noscript.css"
+    /></noscript>
+    <link rel="shortcut icon" href="/assets/favicons/favicon-32x32.png" />
+  </head>
+  <body class="is-preload">
+    <!-- Page Wrapper -->
+    <div id="page-wrapper">
+      <!-- Header -->
+      <header id="header">
+        <a href="/"> <h1>We Cover</h1></a>
+        <nav id="nav">
+          <ul>
+            <li class="special">
+              <a href="#menu" class="menuToggle"><span>Menu</span></a>
+              <div id="menu">
+                <ul>
+                  <li><a href="/">Home</a></li>
+                  <li><a href="/user/approve">Approve</a></li>
+
+                  <li><a href="/user/nft"> NFT Market </a></li>
+                </ul>
+              </div>
+            </li>
+          </ul>
+        </nav>
+      </header>
+
+      <!-- Main -->
+      <article id="main">
+        <header>
+          <h2>APPROVE DONATIONS</h2>
+          <p>Because we believe in transparency !</p>
+        </header>
+        <section class="wrapper style5">
+          <h1 style="color: black; margin-left: 250px">Delivered Items :</h1>
+          <div class="inner">
+            <div class="cards">
+              <div class="cards">
+                <img src="/images/shirt.jpg" alt="" class="card__image" />
+                <div class="card__content">
+                  Donated by: Ananyaa <br />
+                  City: Noida <br />
+                  Clothing Type: T-Shirt <br />
+                  Size: L <br />
+                  Send Credits :
+                  <input type="text" id="amount" /> <br />
+                  <button id="credit">Approve</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </article>
+
+      <!-- Footer -->
+      <footer id="footer">
+        <ul class="icons">
+          <li>
+            <a href="#" class="icon brands fa-twitter"
+              ><span class="label">Twitter</span></a
+            >
+          </li>
+          <li>
+            <a href="#" class="icon brands fa-facebook-f"
+              ><span class="label">Facebook</span></a
+            >
+          </li>
+          <li>
+            <a href="#" class="icon brands fa-instagram"
+              ><span class="label">Instagram</span></a
+            >
+          </li>
+          <li>
+            <a href="#" class="icon brands fa-dribbble"
+              ><span class="label">Dribbble</span></a
+            >
+          </li>
+          <li>
+            <a href="#" class="icon solid fa-envelope"
+              ><span class="label">Email</span></a
+            >
+          </li>
+        </ul>
+      </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/jquery.scrollex.min.js"></script>
+    <script src="/assets/js/jquery.scrolly.min.js"></script>
+    <script src="/assets/js/browser.min.js"></script>
+    <script src="/assets/js/breakpoints.min.js"></script>
+    <script src="/assets/js/util.js"></script>
+    <script src="/assets/js/main.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/web3/1.5.0/web3.min.js"
+      integrity="sha512-0/nXBDmnbXRIkGvwIK2UWg4F8xscIFZHGl2sWevr6f0DnFEqZh4uTw78qLQYC16tVxbbHhoaaZLSBoIopZQucg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.slim.js"
+      integrity="sha512-HNbo1d4BaJjXh+/e6q4enTyezg5wiXvY3p/9Vzb20NIvkJghZxhzaXeffbdJuuZSxFhJP87ORPadwmU9aN3wSA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
+    <script>
+      var contract;
+
+      $(document).ready(function () {
+        web3 = new Web3(web3.currentProvider);
+
+        var address = "0x2b9a3dDbBB1730D2B5A87dCA05d744dB6461E373";
+        var abi = [
+          {
+            inputs: [],
+            stateMutability: "nonpayable",
+            type: "constructor",
+          },
+          {
+            inputs: [],
+            name: "last_completed_migration",
+            outputs: [
+              {
+                internalType: "uint256",
+                name: "",
+                type: "uint256",
+              },
+            ],
+            stateMutability: "view",
+            type: "function",
+            constant: true,
+          },
+          {
+            inputs: [],
+            name: "owner",
+            outputs: [
+              {
+                internalType: "address",
+                name: "",
+                type: "address",
+              },
+            ],
+            stateMutability: "view",
+            type: "function",
+            constant: true,
+          },
+          {
+            inputs: [],
+            name: "getCredits",
+            outputs: [
+              {
+                internalType: "int256",
+                name: "",
+                type: "int256",
+              },
+            ],
+            stateMutability: "view",
+            type: "function",
+            constant: true,
+          },
+          {
+            inputs: [
+              {
+                internalType: "int256",
+                name: "amt",
+                type: "int256",
+              },
+            ],
+            name: "addCredits",
+            outputs: [],
+            stateMutability: "nonpayable",
+            type: "function",
+          },
+          {
+            inputs: [
+              {
+                internalType: "int256",
+                name: "mon",
+                type: "int256",
+              },
+            ],
+            name: "redeemCredits",
+            outputs: [],
+            stateMutability: "nonpayable",
+            type: "function",
+          },
+          {
+            inputs: [
+              {
+                internalType: "uint256",
+                name: "completed",
+                type: "uint256",
+              },
+            ],
+            name: "setCompleted",
+            outputs: [],
+            stateMutability: "nonpayable",
+            type: "function",
+          },
+        ];
+
+        contract = new web3.eth.Contract(abi, address);
+
+        contract.methods
+          .getCredits()
+          .call()
+          .then(function (bal) {
+            console.log(bal);
+          });
+      });
+
+      $("#credit").click(function () {
+        var amt = 0;
+        amt = parseInt($("#amount").val());
+
+        web3.eth
+          .requestAccounts()
+          .then(function (accounts) {
+            var acc = accounts[0];
+            return contract.methods.addCredits(amt).send({ from: acc });
+          })
+          .then(function (tx) {
+            console.log(tx);
+          })
+          .catch(function (tx) {
+            console.log(tx);
+          });
+      });
+    </script>
+  </body>
+</html>
