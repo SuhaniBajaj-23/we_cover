@@ -3,9 +3,6 @@ Deployed link: https://hackstackwecover.herokuapp.com/
 Dummy credentials- <br>
 (Donor) Email Id- suhanioct23@gmail.com  Password- 12345 <br>
 (Availer) Email Id- riddhidhawan@gmail.com       Password- 23456 <br>
-<p align="center">
-  <img src="https://www.intellisource.com/small-things-that-help-people-in-big-ways/" >
-</p>
 
 ### Members
 - Riddhi Dhawan
