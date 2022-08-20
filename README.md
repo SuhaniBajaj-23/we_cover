@@ -4,7 +4,7 @@ Dummy credentials- <br>
 (Donor) Email Id- suhanioct23@gmail.com  Password- 12345 <br>
 (Availer) Email Id- riddhidhawan@gmail.com       Password- 23456 <br>
 <p align="center">
-  <img src="https://www.google.com/search?q=helping+people&sxsrf=ALiCzsaNPn8pppoIFLW4jC_PoV5fUYNaeg:1660956849362&source=lnms&tbm=isch&sa=X&ved=2ahUKEwiw-fi3mtT5AhVh7zgGHV3oBHwQ_AUoAXoECAEQAw&biw=1536&bih=714&dpr=1.25#imgrc=J_0W64ZSRs7wiM" >
+  <img src="https://www.intellisource.com/small-things-that-help-people-in-big-ways/" >
 </p>
 
 ### Members
